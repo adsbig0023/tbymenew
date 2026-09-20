@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+
+<title>Market Signal</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+min-height:100dvh;
+background:#090909;
+color:#fff;
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.grid{
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(255,55,55,.025) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,55,55,.025) 1px,transparent 1px);
+background-size:30px 30px;
+}
+
+.red-glow{
+position:fixed;
+width:320px;
+height:320px;
+border-radius:50%;
+background:#ff3030;
+filter:blur(140px);
+opacity:.08;
+right:-120px;
+top:-120px;
+}
+
+.wrapper{
+width:100%;
+max-width:560px;
+padding:18px;
+position:relative;
+z-index:2;
+}
+
+.panel{
+background:rgba(13,13,13,.96);
+border:1px solid #292929;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 30px 100px rgba(0,0,0,.7);
+animation:boot .8s ease;
+}
+
+@keyframes boot{
+
+from{
+opacity:0;
+transform:translateY(25px);
+}
+
+to{
+opacity:1;
+transform:none;
+}
+
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 17px;
+border-bottom:1px solid #242424;
+}
+
+.signal{
+font-family:monospace;
+font-size:10px;
+color:#ff6565;
+letter-spacing:2px;
+}
+
+.online{
+font-size:9px;
+color:#666;
+margin-top:5px;
+}
+
+.logo{
+width:65px;
+height:65px;
+border-radius:16px;
+object-fit:cover;
+border:1px solid #512424;
+}
+
+.content{
+padding:31px 22px 27px;
+}
+
+.command{
+font-family:monospace;
+color:#656565;
+font-size:10px;
+margin-bottom:13px;
+}
+
+h1{
+font-size:40px;
+line-height:1;
+letter-spacing:-1.5px;
+margin-bottom:16px;
+}
+
+h1 span{
+color:#ff5555;
+}
+
+.desc{
+color:#8d8d8d;
+font-size:14px;
+line-height:1.75;
+margin-bottom:24px;
+}
+
+.signal-box{
+border-left:2px solid #ff4e4e;
+padding:15px 15px;
+background:#131010;
+margin-bottom:20px;
+}
+
+.signal-box small{
+display:block;
+font-family:monospace;
+color:#666;
+font-size:9px;
+margin-bottom:6px;
+}
+
+.signal-box strong{
+font-size:12px;
+color:#ddd;
+}
+
+.features{
+display:flex;
+gap:8px;
+margin-bottom:21px;
+}
+
+.feature{
+flex:1;
+padding:12px 6px;
+border:1px solid #292929;
+border-radius:10px;
+text-align:center;
+}
+
+.feature b{
+display:block;
+font-size:10px;
+margin-bottom:5px;
+}
+
+.feature span{
+font-size:8px;
+color:#666;
+}
+
+.join{
+display:block;
+text-align:center;
+padding:18px;
+background:#ff4d4d;
+color:#160303;
+text-decoration:none;
+font-weight:900;
+font-size:13px;
+border-radius:12px;
+transition:.25s;
+}
+
+.join:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(255,77,77,.18);
+}
+
+.note{
+text-align:center;
+font-size:9px;
+color:#4e4e4e;
+margin-top:13px;
+}
+
+.agency{
+position:fixed;
+bottom:max(9px,env(safe-area-inset-bottom));
+left:0;
+width:100%;
+text-align:center;
+font-size:10px;
+color:#4a4a4a;
+z-index:5;
+}
+
+.agency a{
+color:#707070;
+text-decoration:none;
+}
+
+@media(max-width:420px){
+
+h1{
+font-size:33px;
+}
+
+.content{
+padding:27px 18px 24px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<div class="red-glow"></div>
+
+<div class="wrapper">
+
+<div class="panel">
+
+<div class="top">
+
+<div>
+
+<div class="signal">
+MARKET_SIGNAL
+</div>
+
+<div class="online">
+COMMUNITY CHANNEL
+</div>
+
+</div>
+
+<img
+src="logo.png"
+class="logo"
+alt="Community Logo"
+>
+
+</div>
+
+<div class="content">
+
+<div class="command">
+> CONNECT / MARKET_ROOM
+</div>
+
+<h1>
+Follow the signal.<br>
+<span>Join the room.</span>
+</h1>
+
+<p class="desc">
+Connect with the Telegram community for market discussions,
+educational content and regular updates.
+</p>
+
+<div class="signal-box">
+
+<small>CHANNEL STATUS</small>
+
+<strong>
+TELEGRAM COMMUNITY ACCESS
+</strong>
+
+</div>
+
+<div class="features">
+
+<div class="feature">
+<b>MARKET</b>
+<span>DISCUSSIONS</span>
+</div>
+
+<div class="feature">
+<b>INSIGHT</b>
+<span>EDUCATION</span>
+</div>
+
+<div class="feature">
+<b>UPDATE</b>
+<span>REGULAR</span>
+</div>
+
+</div>
+
+<a
+id="telegramButton"
+class="join"
+href="#"
+target="_blank"
+rel="noopener noreferrer"
+>
+CONNECT TO TELEGRAM →
+</a>
+
+<div class="note">
+Information is educational. Market risk applies.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="agency">
+
+Ads managed by
+
+<a
+id="agencyLink"
+href="#"
+target="_blank"
+rel="noopener noreferrer"
+>
+Snow Ads Agency
+</a>
+
+</div>
+
+
+<script>
+
+const META_PIXEL_ID =
+"YOUR_PIXEL_ID";
+
+const TELEGRAM_LINK =
+"https://t.me/YOUR_CLIENT_TELEGRAM";
+
+const AGENCY_LINK =
+"https://YOUR-SNOW-AGENCY-LINK.com";
+
+
+document.getElementById("telegramButton").href =
+TELEGRAM_LINK;
+
+document.getElementById("agencyLink").href =
+AGENCY_LINK;
+
+
+/* META PIXEL */
+
+if(
+META_PIXEL_ID &&
+META_PIXEL_ID !== "YOUR_PIXEL_ID"
+){
+
+!function(f,b,e,v,n,t,s){
+
+if(f.fbq)return;
+
+n=f.fbq=function(){
+
+n.callMethod ?
+n.callMethod.apply(n,arguments) :
+n.queue.push(arguments)
+
+};
+
+if(!f._fbq)f._fbq=n;
+
+n.push=n;
+n.loaded=!0;
+n.version="2.0";
+n.queue=[];
+
+t=b.createElement(e);
+t.async=!0;
+t.src=v;
+
+s=b.getElementsByTagName(e)[0];
+
+s.parentNode.insertBefore(t,s);
+
+}(
+window,
+document,
+"script",
+"https://connect.facebook.net/en_US/fbevents.js"
+);
+
+fbq("init",META_PIXEL_ID);
+
+fbq("track","PageView");
+
+}
+
+
+/* REAL TELEGRAM CTA EVENT */
+
+document
+.getElementById("telegramButton")
+.addEventListener("click",function(){
+
+if(typeof fbq === "function"){
+
+fbq(
+"trackCustom",
+"TelegramJoinClick"
+);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
